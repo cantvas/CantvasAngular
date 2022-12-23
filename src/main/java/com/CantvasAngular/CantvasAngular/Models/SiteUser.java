@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class SiteUser {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
     private String email;
 

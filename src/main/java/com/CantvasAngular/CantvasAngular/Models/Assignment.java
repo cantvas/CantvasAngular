@@ -5,10 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
+//@Entity
 public class Assignment {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+//    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    Long id;
 
     public Assignment(){}
 }

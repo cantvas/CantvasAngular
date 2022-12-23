@@ -10,11 +10,27 @@ public class Teacher extends SiteUser{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToMany(mappedBy = "Course")
+    @ManyToMany
     @JoinTable(
             joinColumns = {@JoinColumn(name = "Course.id")},
             inverseJoinColumns = {@JoinColumn(name = "Teacher.id")})
     private List<Course> courseList;
 
     public Teacher(){}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
 }
