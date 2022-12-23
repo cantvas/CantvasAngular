@@ -1,6 +1,8 @@
-package com.CantvasAngular.CantvasAngular.practice;
+package com.CantvasAngular.CantvasAngular.Controllers;
 
 
+import com.CantvasAngular.CantvasAngular.Models.SiteUser;
+import com.CantvasAngular.CantvasAngular.Repository.SiteUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
