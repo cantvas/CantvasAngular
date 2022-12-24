@@ -1,5 +1,6 @@
 package com.CantvasAngular.CantvasAngular.Models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,8 +12,11 @@ public class Course {
 
     private String name;
 //    private Assignment assignment;
+    @JsonManagedReference
     @OneToMany(mappedBy = "course")
     private List<Teacher> teachersList;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "course")
     private List<Student> studentsList;
 //    @OneToMany
@@ -21,8 +25,7 @@ public class Course {
 
     public Course(){}
 
-    public Course(Long id, String name) {
-        this.id = id;
+    public Course(String name) {
         this.name = name;
     }
 

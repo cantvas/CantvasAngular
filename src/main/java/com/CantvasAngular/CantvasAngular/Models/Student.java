@@ -1,5 +1,6 @@
 package com.CantvasAngular.CantvasAngular.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class Student extends SiteUser{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @JsonBackReference
     @ManyToOne
     private Course course;
 
@@ -18,6 +20,11 @@ public class Student extends SiteUser{
     public Student(String name, String email) {
         this.name = name;
         this.email = email;
+    }
+
+    public Student(String name, String email, Course course) {
+        super(name, email);
+        this.course = course;
     }
 
     public long getId() {

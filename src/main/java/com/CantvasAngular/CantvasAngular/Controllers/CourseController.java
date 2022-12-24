@@ -20,23 +20,22 @@ public class CourseController {
 
 
 
-//    @GetMapping("/courses")
-//    public List<Course> getCourses() {
-//        List<Course> courses = courseRepository.findAll();
-//        return courses;
-//    }
+    @GetMapping("/courses")
+    public List<Course> getCourses() {
+        List<Course> courses = courseRepository.findAll();
+        return courses;
+    }
 
-//    @PostMapping("/course")
-//    public RedirectView addCourse(@RequestBody Course course) {
-//        courseRepository.save(course);
-//        return new RedirectView("/courses");
-//    }
-//
-//    @PostMapping("/coursefake")
-//    public int addCourseFake() {
-//        Course course = new Course(1L, "ben");
-//        courseRepository.save(course);
-//        return Response.SC_OK;
-//    }
+    @PostMapping("/course")
+    public int addCourse(@RequestBody Course course) {
+        courseRepository.save(course);
+        return Response.SC_OK;
+    }
 
+    @PostMapping("/coursefake")
+    public int addCourseFake() {
+        Course course = new Course("ben");
+        courseRepository.save(course);
+        return Response.SC_OK;
+    }
 }
