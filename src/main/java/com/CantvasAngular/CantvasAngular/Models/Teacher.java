@@ -15,6 +15,11 @@ public class Teacher extends SiteUser{
 
     public Teacher(){}
 
+    public Teacher(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
     public long getId() {
         return id;
     }
