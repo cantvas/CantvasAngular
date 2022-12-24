@@ -11,15 +11,20 @@ public class Course {
 
     private String name;
 //    private Assignment assignment;
-    @ManyToMany(mappedBy = "courseList")
+    @OneToMany(mappedBy = "course")
     private List<Teacher> teachersList;
-    @ManyToMany(mappedBy = "courseList")
+    @OneToMany(mappedBy = "course")
     private List<Student> studentsList;
 //    @OneToMany
 //    @JoinColumn(name="assignment")
 //    private List<Assignment> assignmentList;
 
     public Course(){}
+
+    public Course(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

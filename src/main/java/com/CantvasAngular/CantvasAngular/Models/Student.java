@@ -10,13 +10,15 @@ public class Student extends SiteUser{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToMany
-    @JoinTable(
-            joinColumns = {@JoinColumn(name = "Course.id")},
-            inverseJoinColumns = {@JoinColumn(name = "Student.id")})
-    private List<Course> courseList;
+    @ManyToOne
+    private Course course;
 
     public Student(){}
+
+    public Student(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
     public long getId() {
         return id;
@@ -26,11 +28,4 @@ public class Student extends SiteUser{
         this.id = id;
     }
 
-    public List<Course> getCourseList() {
-        return courseList;
-    }
-
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
-    }
 }
