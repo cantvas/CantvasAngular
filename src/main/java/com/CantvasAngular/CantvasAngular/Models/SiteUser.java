@@ -1,10 +1,10 @@
 package com.CantvasAngular.CantvasAngular.Models;
 
 import jakarta.persistence.*;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 @MappedSuperclass
-public abstract class SiteUser implements UserDetails {
+public abstract class SiteUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
