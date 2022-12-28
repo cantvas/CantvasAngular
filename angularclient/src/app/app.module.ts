@@ -7,18 +7,22 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserService } from './service/user-service.service';
+import { MatCardModule } from "@angular/material/card";
+import { CourseComponent } from './component/course/course.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    UserFormComponent
+    UserFormComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
