@@ -15,6 +15,9 @@ public class Student extends SiteUser{
     @ManyToOne
     private Course course;
 
+//    @OneToOne
+//    private Gradebook gradebook;
+
     public Student(){}
 
     public Student(String name, String email) {
@@ -31,8 +34,11 @@ public class Student extends SiteUser{
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Course getCourse() {
+        return course;
     }
 
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }

@@ -14,6 +14,7 @@ public class Assignment {
 
     String name;
     String document;
+    Integer maxValue;
 //    Date dueDate;
     public Assignment(){}
     public Assignment(String name, String document){
