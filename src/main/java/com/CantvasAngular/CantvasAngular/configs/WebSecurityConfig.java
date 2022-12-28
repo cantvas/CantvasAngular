@@ -7,21 +7,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.security.config.Customizer.withDefaults;
+
 
 
 @Configuration
-public class WebSecurityConfig{
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SiteUserDetailsServiceImpl userDetailsService;
 
@@ -31,43 +26,27 @@ public class WebSecurityConfig{
         return bCryptPasswordEncoder;
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(final AuthenticationManagerBuilder authManagerBuilder) throws Exception {
+        authManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    protected void configure(final HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authz) -> authz
-                        .anyRequest()
-                        .authenticated()
-                )
-                .httpBasic(withDefaults());
-        return http.build();
+                .cors().disable()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/signup","/login").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/course")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/");
     }
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests((authorizeRequests) ->
-                        authorizeRequests
-                                .anyRequest()
-                                .hasRole("USER")
-                )
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
-                .sessionManagement((sessionManagement) ->
-                        sessionManagement
-                                .sessionConcurrency((sessionConcurrency) ->
-                                        sessionConcurrency
-                                                .maximumSessions(1)
-                                                .expiredUrl("/login?expired")
-                                )
-                );
-        return http.build();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
-                .password("password")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-    }
 }
