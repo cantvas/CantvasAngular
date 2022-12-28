@@ -36,16 +36,7 @@ public class SiteUserController {
         String hashedPw = passwordEncoder.encode(password);
         SiteUser newUser = new Student(username, hashedPw);
         siteUserRepository.save(newUser);
-        authWithHttpServletRequest(username, password);
         return new RedirectView("/course");
-    }
-
-    public void authWithHttpServletRequest(String username, String password) {
-        try {
-            request.login(username, password);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
     }
 
 //    @PostMapping("/student")
