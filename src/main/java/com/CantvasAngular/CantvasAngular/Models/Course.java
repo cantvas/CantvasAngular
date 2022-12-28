@@ -11,7 +11,6 @@ public class Course {
     Long id;
 
     private String name;
-//    private Assignment assignment;
     @JsonManagedReference
     @OneToMany(mappedBy = "course")
     private List<Teacher> teachersList;
@@ -19,12 +18,11 @@ public class Course {
     @JsonManagedReference
     @OneToMany(mappedBy = "course")
     private List<Student> studentsList;
-//    @OneToMany
-//    @JoinColumn(name="assignment")
-//    private List<Assignment> assignmentList;
+
+    @OneToMany
+    private List<Assignment> assignmentList;
 
     public Course(){}
-
     public Course(String name) {
         this.name = name;
     }
@@ -57,11 +55,11 @@ public class Course {
         this.studentsList = studentsList;
     }
 
-//    public List<Assignment> getAssignmentList() {
-//        return assignmentList;
-//    }
-//
-//    public void setAssignmentList(List<Assignment> assignmentList) {
-//        this.assignmentList = assignmentList;
-//    }
+    public List<Assignment> getAssignmentList() {
+        return assignmentList;
+    }
+
+    public void setAssignmentList(List<Assignment> assignmentList) {
+        this.assignmentList = assignmentList;
+    }
 }
