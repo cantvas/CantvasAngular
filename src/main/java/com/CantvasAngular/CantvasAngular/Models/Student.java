@@ -2,22 +2,23 @@ package com.CantvasAngular.CantvasAngular.Models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import java.util.HashMap;
 
-
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Student extends SiteUser{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
+
+    private HashMap<Assignment, Integer> gradesMap = new HashMap<>();
 
     @JsonBackReference
     @ManyToOne
     private Course course;
 
-//    @OneToOne
+//    @OneToOne(mappedBy = "student")
 //    private Gradebook gradebook;
 
     public Student(){}
@@ -42,5 +43,22 @@ public class Student extends SiteUser{
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public void buildGradesMap(){
+        for(Assignment assignment : course.getAssignmentList()){
+            gradesMap.put(assignment, null);
+        }
+    }
+    public void updateGrade(Assignment assignment, Integer newGrade){
+        gradesMap.put(assignment, newGrade);
+    }
+
+    public HashMap<Assignment, Integer> getGradesMap() {
+        return gradesMap;
+    }
+
+    public void setGradesMap(HashMap<Assignment, Integer> gradesMap) {
+        this.gradesMap = gradesMap;
     }
 }
