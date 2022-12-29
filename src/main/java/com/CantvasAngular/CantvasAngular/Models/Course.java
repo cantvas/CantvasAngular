@@ -3,6 +3,7 @@ package com.CantvasAngular.CantvasAngular.Models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Course {
     private List<Student> studentsList;
 
     @OneToMany
-    private List<Assignment> assignmentList;
+    private List<Assignment> assignmentList = new ArrayList<>();
 
     public Course(){}
     public Course(String name) {
@@ -59,7 +60,7 @@ public class Course {
         return assignmentList;
     }
 
-    public void setAssignmentList(List<Assignment> assignmentList) {
-        this.assignmentList = assignmentList;
+    public void addToAssignmentList(Assignment assignment){
+        assignmentList.add(assignment);
     }
 }
