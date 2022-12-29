@@ -10,11 +10,10 @@ import { CourseService } from 'src/app/service/course.service';
 })
 export class HomeComponent implements OnInit {
 
-  courses: Course[] = [];
+  courses$!: Observable<Course[]>;
 
 
   constructor(private coursesService: CourseService) {
-
   }
 
   ngOnInit() {
@@ -28,8 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   reloadCourses() {
-
-    this.coursesService.findAll().subscribe(data => this.courses = data);
-
+    this.courses$ = this.coursesService.findAll();
   }
 }

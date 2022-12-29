@@ -1,11 +1,10 @@
 package com.CantvasAngular.CantvasAngular.Models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 public class Student extends SiteUser{
@@ -16,6 +15,10 @@ public class Student extends SiteUser{
     @JsonBackReference
     @ManyToOne
     private Course course;
+
+    @OneToMany
+    @JoinTable(name = "STUDENT_ASSIGNMENTS", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "ASSIGNMENT_ID"))
+    List<Assignment> assignment;
 
 //    @OneToOne
 //    private Gradebook gradebook;

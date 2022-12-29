@@ -1,6 +1,7 @@
-<mat-card>
-    <mat-card-title>{{ course?.name }}</mat-card-title>
+<mat-card class="course-details">
+    <mat-card-title>{{ course.name }}</mat-card-title>
     <mat-card-content>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat odio commodi cupiditate perspiciatis.
          Delectus consectetur dolor 
         rerum qui beatae sequi at iure hic, rem cumque ipsam ad cum labore quas?</mat-card-content>
+    <button mat-button-raised class="add-assignment-button" (click)="addAssignment()">Add assignment</button>
 </mat-card>

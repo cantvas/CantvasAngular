@@ -22,12 +22,4 @@ public class SiteUserController {
     public List<SiteUser> getAllStudents() {
         return siteUserRepository.findAll();
     }
-
-
-//    @PostMapping("/student")
-//    public RedirectView createStudent() {
-//        Student s = new Student("ben", "bhlieberman93@gmail.com");
-//        siteUserRepository.save(s);
-//        return new RedirectView("/");
-//    }
 }

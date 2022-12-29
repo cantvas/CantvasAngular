@@ -3,12 +3,11 @@ package com.CantvasAngular.CantvasAngular.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Teacher extends SiteUser{
+public class Teacher extends SiteUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -17,7 +16,7 @@ public class Teacher extends SiteUser{
     @JsonBackReference
     private Course course;
 
-    public Teacher(){}
+    public Teacher() {}
 
     public Teacher(String name, String email) {
         this.name = name;
