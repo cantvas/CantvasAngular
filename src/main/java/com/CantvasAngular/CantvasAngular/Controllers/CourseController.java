@@ -69,10 +69,10 @@ public class CourseController {
     public int addAssignment(@RequestBody Assignment assignment){
         assignmentRepository.save(assignment);
         Course course = courseRepository.findById(1L).get();
-        List<Student> studentList = course.getStudentsList();
-        for (Student student: studentList){
-            student.updateGrade(assignment, null);
-        }
+//        List<Student> studentList = course.getStudentsList();
+//        for (Student student: studentList){
+//            student.updateGrade(assignment, null);
+//        }
         course.addToAssignmentList(assignment);
         return Response.SC_OK;
     }
@@ -82,7 +82,7 @@ public class CourseController {
         studentRepository.save(student);
         Course course = courseRepository.findById(1L).get();
         student.setCourse(course);
-        student.buildGradesMap();
+//        student.buildGradesMap();
         return Response.SC_OK;
     }
 

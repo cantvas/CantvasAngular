@@ -1,0 +1,25 @@
+<div class="courses-panel">
+
+  <h3>All Courses</h3>
+
+  <mat-tab-group>
+
+    <mat-tab label="Beginners">Hello werld</mat-tab>
+
+    <mat-tab label="Advanced">
+        <mat-card *ngFor = "let assignment of assignments" class="course-details" >
+          <mat-card-title>{{assignment.name}}</mat-card-title>
+          <mat-card-content>{{assignment.document}}</mat-card-content>
+          <button mat-button-raised class="goto-assignment-detail" [routerLink] = "['/assignment', assignment.id]">Details</button>
+        </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Super Duper">
+      
+      
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>
