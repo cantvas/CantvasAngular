@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, pipe, map, tap } from 'rxjs';
-import { Assignment } from 'src/app/model/assignment';
+import { Assignment } from '../../model/assignment';
 import { Course } from 'src/app/model/course';
 import { AssignmentService } from 'src/app/service/assignment.service';
 import { CourseService } from 'src/app/service/course.service';

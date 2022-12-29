@@ -13,9 +13,6 @@ public class Student extends SiteUser{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private HashMap<Assignment, Integer> gradesMap = new HashMap<>();
-
     @JsonBackReference
     @ManyToOne
     private Course course;
@@ -48,22 +45,5 @@ public class Student extends SiteUser{
 
     public void setCourse(Course course) {
         this.course = course;
-    }
-
-    public void buildGradesMap(){
-        for(Assignment assignment : course.getAssignmentList()){
-            gradesMap.put(assignment, null);
-        }
-    }
-    public void updateGrade(Assignment assignment, Integer newGrade){
-        gradesMap.put(assignment, newGrade);
-    }
-
-    public HashMap<Assignment, Integer> getGradesMap() {
-        return gradesMap;
-    }
-
-    public void setGradesMap(HashMap<Assignment, Integer> gradesMap) {
-        this.gradesMap = gradesMap;
     }
 }
