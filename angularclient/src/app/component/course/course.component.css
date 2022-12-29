@@ -1,5 +1,6 @@
 
 
-.course-card{
-  max-width: 50px;
+.course-cards {
+  display: flex;
+  justify-content: center;
 }
