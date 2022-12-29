@@ -1,6 +1,10 @@
 
 
-.course-cards {
+.course-details {
   display: flex;
-  justify-content: center;
+  align-items: center;
+}
+
+.add-assignment-button {
+  max-width: 100px;
 }

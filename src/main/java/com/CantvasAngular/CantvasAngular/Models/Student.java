@@ -1,5 +1,7 @@
 package com.CantvasAngular.CantvasAngular.Models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.HashMap;
@@ -18,7 +20,10 @@ public class Student extends SiteUser{
     @ManyToOne
     private Course course;
 
-//    @OneToOne(mappedBy = "student")
+
+    @OneToMany
+    @JoinTable(name = "STUDENT_ASSIGNMENTS", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "ASSIGNMENT_ID"))
+    List<Assignment> assignment;
 //    private Gradebook gradebook;
 
     public Student(){}
