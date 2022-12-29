@@ -21,3 +21,47 @@
     </div>
   </div>
 </div>
+
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #start (click)="start.close()">
+    <mat-nav-list class="navList">
+      <a class="items" mat-list-item routerLink="/">
+        <span>Home</span>
+      </a>
+      <a class="items" mat-list-item routerLink="/users">
+        <span >List Users</span>
+      </a>
+      <a class="items" mat-list-item routerLink="/adduser">
+        <span >Add User</span>
+      </a>
+      <a class="items" mat-list-item  routerLink="/assignments">
+        <span>Assignments</span>
+      </a>
+      <a class="items" mat-list-item  routerLink="/courses">
+        <span>Go to Courses</span>
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+
+    <div class="toolbar-tools">
+
+      <button mat-icon-button (click)="start.open('mouse')">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <div class="filler"></div>
+
+    </div>
+
+
+  </mat-toolbar>
+
+
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>
