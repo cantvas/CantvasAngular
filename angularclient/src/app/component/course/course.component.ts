@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, pipe, map, tap } from 'rxjs';
 import { Course } from 'src/app/model/course';
 import { CourseService } from 'src/app/service/course.service';
 
@@ -9,15 +10,23 @@ import { CourseService } from 'src/app/service/course.service';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-  constructor(private coursesService: CourseService){
 
+  course: Course | undefined;
+
+  constructor(
+    private coursesService: CourseService,
+    private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    this.route.params.pipe(
+      map(data => data['courseId']),
+      tap((id: number) => {
+        this.loadCourseData(id).subscribe(data => this.course = data);
+      })
+    ).subscribe(data => data);
   }
 
-  loadCourses():Observable<Course[]> {
-    return this.coursesService.findAll();
-  }
-
-  ngOnInit():void{
-    this.loadCourses().subscribe(x => console.log(x));
+  loadCourseData(id: number): Observable<Course> {
+    return this.coursesService.findOne(id);
   }
 }

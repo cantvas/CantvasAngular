@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
-@CrossOrigin("http://localhost:4200")
+
+@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
 public class CourseController {
-
+    
     @Autowired
     CourseRepository courseRepository;
+
 
     @Autowired
     AssignmentRepository assignmentRepository;
@@ -55,6 +57,12 @@ public class CourseController {
         joe.setCourse(course);
         courseRepository.save(course);
         return Response.SC_OK;
+        }
+
+    @GetMapping("/courses/{id}")
+    public Course getCourseById(@PathVariable Long id) {
+        return courseRepository.findById(id).orElseThrow();
+
     }
 
     @PostMapping("/addAssignment")
