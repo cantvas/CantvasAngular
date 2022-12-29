@@ -35,7 +35,7 @@ export class CourseComponent implements OnInit {
   }
 
   addAssignment(): void {
-    let assignment: Assignment = new Assignment("test", "foobarbaz", 100);
+    let assignment: Assignment = new Assignment(999, "test", "foobarbaz", 100);
     console.log("adding assignment");
     this.assignmentService.addAssignment(assignment);
     
