@@ -8,7 +8,6 @@ import com.CantvasAngular.CantvasAngular.Repository.AssignmentRepository;
 import com.CantvasAngular.CantvasAngular.Repository.CourseRepository;
 import com.CantvasAngular.CantvasAngular.Repository.StudentRepository;
 import com.CantvasAngular.CantvasAngular.Repository.TeacherRepository;
-import org.apache.catalina.Session;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -65,24 +64,16 @@ public class CourseController {
 
     }
 
+
     @PostMapping("/addAssignment")
     public int addAssignment(@RequestBody Assignment assignment){
         assignmentRepository.save(assignment);
         Course course = courseRepository.findById(1L).get();
-//        List<Student> studentList = course.getStudentsList();
-//        for (Student student: studentList){
-//            student.updateGrade(assignment, null);
-//        }
+        List<Student> studentList = course.getStudentsList();
+        for (Student student: studentList){
+           student.updateGrade(assignment, null);
+        }
         course.addToAssignmentList(assignment);
-        return Response.SC_OK;
-    }
-
-    @PostMapping("/addStudent")
-    public int addStudent(@RequestBody Student student){
-        studentRepository.save(student);
-        Course course = courseRepository.findById(1L).get();
-        student.setCourse(course);
-//        student.buildGradesMap();
         return Response.SC_OK;
     }
 
