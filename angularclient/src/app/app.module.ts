@@ -29,6 +29,9 @@ import { CourseDialogComponent } from './component/course-dialog/course-dialog.c
 import { CourseCardsComponent } from './component/course-cards/course-cards.component';
 import { HomeComponent } from './component/home/home.component';
 import { TeacherComponent } from './component/teacher/teacher.component';
+import { AssignmentsComponent } from './component/assignments/assignments.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AssignmentComponent } from './component/assignment/assignment.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { TeacherComponent } from './component/teacher/teacher.component';
     CourseDialogComponent,
     CourseCardsComponent,
     HomeComponent,
-    TeacherComponent
+    TeacherComponent,
+    AssignmentsComponent,
+    AssignmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,9 +70,10 @@ import { TeacherComponent } from './component/teacher/teacher.component';
     AppRoutingModule,
     MatSelectModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

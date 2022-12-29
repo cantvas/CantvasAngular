@@ -64,6 +64,19 @@ public class CourseController {
 
     }
 
+
+    @PostMapping("/addAssignment")
+    public int addAssignment(@RequestBody Assignment assignment){
+        assignmentRepository.save(assignment);
+        Course course = courseRepository.findById(1L).get();
+        List<Student> studentList = course.getStudentsList();
+        for (Student student: studentList){
+           student.updateGrade(assignment, null);
+        }
+        course.addToAssignmentList(assignment);
+        return Response.SC_OK;
+    }
+
     @PostMapping("/addTeacher")
     public int addTeacher(@RequestBody Teacher teacher){
         teacherRepository.save(teacher);

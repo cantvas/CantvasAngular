@@ -1,11 +1,13 @@
 export class Assignment {
-    name: string
-    document: string
-    maxValue: number
+  id: number;
+  name: string;
+  document: string;
+  maxValue: number;
 
-    constructor(name: string, document: string, maxValue: number) {
-        this.name = name;
-        this.document = document;
-        this.maxValue = maxValue;
-    }
+  constructor(id: number, name: string, document: string, maxValue: number) {
+    this.id = id;
+    this.name = name;
+    this.document = document;
+    this.maxValue = maxValue;
+  }
 }
