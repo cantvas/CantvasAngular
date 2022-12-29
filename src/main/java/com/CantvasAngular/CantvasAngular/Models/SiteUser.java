@@ -2,6 +2,7 @@ package com.CantvasAngular.CantvasAngular.Models;
 
 import jakarta.persistence.*;
 
+
 @MappedSuperclass
 public abstract class SiteUser {
     @Id

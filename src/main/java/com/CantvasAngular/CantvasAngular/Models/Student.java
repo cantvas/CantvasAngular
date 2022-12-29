@@ -3,6 +3,8 @@ package com.CantvasAngular.CantvasAngular.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -14,6 +16,9 @@ public class Student extends SiteUser{
     @JsonBackReference
     @ManyToOne
     private Course course;
+
+//    @OneToOne
+//    private Gradebook gradebook;
 
     public Student(){}
 
@@ -31,8 +36,11 @@ public class Student extends SiteUser{
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Course getCourse() {
+        return course;
     }
 
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }

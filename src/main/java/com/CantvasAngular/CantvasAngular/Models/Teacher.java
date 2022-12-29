@@ -3,6 +3,8 @@ package com.CantvasAngular.CantvasAngular.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -42,4 +44,5 @@ public class Teacher extends SiteUser{
     public void setCourse(Course course) {
         this.course = course;
     }
+
 }
