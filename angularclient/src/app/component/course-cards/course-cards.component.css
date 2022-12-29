@@ -1,6 +1,7 @@
 
 .course-card{
-    max-width: 300px;
-    max-height: 250px;
-    margin: 25px;
+    max-width: 250px;
+    max-height: 350px;
+    margin: 8px;
+    margin-bottom: 15px;
   }

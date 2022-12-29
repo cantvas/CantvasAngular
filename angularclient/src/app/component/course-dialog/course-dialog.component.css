@@ -1,0 +1,10 @@
+.edit-course-modal{
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-course-buttons{
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 20px;
+}

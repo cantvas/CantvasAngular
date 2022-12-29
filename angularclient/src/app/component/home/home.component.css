@@ -1,0 +1,8 @@
+app-course-cards{
+  padding: 20px;
+  display: flex;
+  /* align-items: center; */
+  /* justify-items: center; */
+  justify-content: space-around;
+  flex-flow: wrap;
+}
