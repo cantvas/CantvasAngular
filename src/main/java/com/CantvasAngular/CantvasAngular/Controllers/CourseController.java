@@ -7,16 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
-@RestController("/api/course")
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
 public class CourseController {
-
+    
     @Autowired
     CourseRepository courseRepository;
-
-
-
+    
+    
     @GetMapping("/courses")
     public List<Course> getCourses() {
         List<Course> courses = courseRepository.findAll();
@@ -29,10 +28,8 @@ public class CourseController {
         return Response.SC_OK;
     }
 
-    @PostMapping("/coursefake")
-    public int addCourseFake() {
-        Course course = new Course("ben");
-        courseRepository.save(course);
-        return Response.SC_OK;
+    @GetMapping("/courses/{id}")
+    public Course getCourseById(@PathVariable Long id) {
+        return courseRepository.findById(id).orElseThrow();
     }
 }
