@@ -16,7 +16,9 @@ export class StudentService {
   }
 
   public findAll(): Observable<Student[]> {
-    return this.http.get<Student[]>(`${this.url}/students`);
+    let allStudents = this.http.get<Student[]>("http://localhost:8080/students");
+    allStudents.subscribe(data => console.log(data))
+    return allStudents;
   }
 
   public createStudent(student: Student): void {

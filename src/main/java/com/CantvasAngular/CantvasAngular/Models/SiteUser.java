@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public abstract class SiteUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     public String name;
     public String email;
 
