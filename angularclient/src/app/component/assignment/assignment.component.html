@@ -1,7 +1,16 @@
 <h1 class="courses-title">Assignment Details</h1>
 <div class="course-details-holder">
 <mat-card class="course-details">
-  <mat-card-title class="course-details-header">{{assignment?.name}}</mat-card-title>
+  
+  <div class="parent">
+          <div class="child1">
+          <mat-card-title class="dueDate"> Due: 12/31/2022 2:00pm</mat-card-title>
+          <mat-card-title class="dueDate"> Points Possible: 10</mat-card-title>
+        </div>
+        <div class="child2">
+          <mat-card-title class="course-details-header">{{assignment?.name}}</mat-card-title>
+        </div>
+      </div>
   <mat-card-content class="course-details-body">{{assignment?.document}}</mat-card-content>
   <button mat-flat-button color="warn" class="goto-assignment-detail">Submit</button>
 </mat-card>
