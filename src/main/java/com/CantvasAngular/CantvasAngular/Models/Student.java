@@ -35,7 +35,7 @@ public class Student extends SiteUser{
         this.course = course;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

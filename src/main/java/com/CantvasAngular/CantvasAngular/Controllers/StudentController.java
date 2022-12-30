@@ -11,6 +11,7 @@ import com.CantvasAngular.Services.GradesService;
 import org.apache.catalina.connector.Response;
 import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class StudentController {
 
@@ -62,5 +64,12 @@ public class StudentController {
             List<Assignment> assignments = assignmentRepository.findByStudentId(id);
             return gradesService.calculateAverage(assignments, student);
         } else return 0.0;
+    }
+
+    @PostMapping("/dummy-student")
+    public HttpStatus addDumy(){
+        Student dummy = new Student("I did it!", "takethat@getrekt.com");
+        studentRepository.save(dummy);
+        return HttpStatus.OK;
     }
 }
