@@ -10,10 +10,12 @@ import com.CantvasAngular.CantvasAngular.Repository.StudentRepository;
 import com.CantvasAngular.CantvasAngular.Repository.TeacherRepository;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
@@ -60,6 +62,17 @@ public class CourseController {
     public Course getCourseById(@PathVariable Long id) {
         return courseRepository.findById(id).orElseThrow();
 
+    }
+
+    @PutMapping("/courses/{id}")
+    public HttpStatus updateCourse(@RequestBody Course course, @PathVariable Long id) {
+        Course toBeChanged = courseRepository.findById(id).flatMap((Course c) -> {
+            String newName = course.getName();
+            if (newName != null) c.setName(newName);
+            return Optional.of(c);
+        }).orElseThrow();
+        courseRepository.updateCourse(toBeChanged, id);
+        return HttpStatus.NO_CONTENT;
     }
 
     @PostMapping("/courses/{id}/addAssignment")
