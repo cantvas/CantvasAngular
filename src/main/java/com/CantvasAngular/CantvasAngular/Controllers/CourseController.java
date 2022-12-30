@@ -65,13 +65,12 @@ public class CourseController {
     }
 
     @PutMapping("/courses/{id}")
-    public HttpStatus updateCourse(@RequestBody Course course, @PathVariable Long id) {
+    public HttpStatus updateCourse(@RequestBody String courseName, @PathVariable Long id) {
         Course toBeChanged = courseRepository.findById(id).flatMap((Course c) -> {
-            String newName = course.getName();
-            if (newName != null) c.setName(newName);
+            c.setName(courseName);
             return Optional.of(c);
         }).orElseThrow();
-        courseRepository.updateCourse(toBeChanged, id);
+        courseRepository.updateCourse(courseName, toBeChanged, id);
         return HttpStatus.NO_CONTENT;
     }
 
