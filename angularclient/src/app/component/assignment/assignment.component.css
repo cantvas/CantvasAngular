@@ -1,0 +1,41 @@
+.course-details-holder{
+    display: flex;
+    min-height: 500px;
+    justify-content: center;
+    align-items: center;
+  }
+  .course-details {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    height: 400px;
+  }
+  
+  .course-details-header{
+    margin: 20px;
+    font-size: x-large;
+  }
+  .course-details-body{
+    margin: 20px;
+    font-size: large;
+  }
+  .add-assignment-button {
+    margin-bottom: 20px;
+  }
+  .courses-title{
+    padding-top: 30px;
+    margin-left: 25px;
+    font-weight: 400;
+    font-size:x-large;
+  }
+
+  .goto-assignment-detail{
+    width: 150px;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
