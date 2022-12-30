@@ -10,20 +10,20 @@ import com.CantvasAngular.CantvasAngular.Repository.StudentRepository;
 import com.CantvasAngular.CantvasAngular.Repository.TeacherRepository;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 public class CourseController {
-    
+
     @Autowired
     CourseRepository courseRepository;
-
 
     @Autowired
     AssignmentRepository assignmentRepository;
@@ -56,7 +56,7 @@ public class CourseController {
         joe.setCourse(course);
         courseRepository.save(course);
         return Response.SC_OK;
-        }
+    }
 
     @GetMapping("/courses/{id}")
     public Course getCourseById(@PathVariable Long id) {
@@ -64,23 +64,34 @@ public class CourseController {
 
     }
 
+    @PutMapping("/courses/{id}")
+    public HttpStatus updateCourse(@RequestBody Course course, @PathVariable Long id) {
+        Course toBeChanged = courseRepository.findById(id).flatMap((Course c) -> {
+            String newName = course.getName();
+            if (newName != null) c.setName(newName);
+            return Optional.of(c);
+        }).orElseThrow();
+        courseRepository.updateCourse(toBeChanged, id);
+        return HttpStatus.NO_CONTENT;
+    }
 
-    @PostMapping("/addAssignment")
-    public int addAssignment(@RequestBody Assignment assignment){
+    @PostMapping("/courses/{id}/addAssignment")
+    public int addAssignment(@RequestBody Assignment assignment, @PathVariable Long id) {
         assignmentRepository.save(assignment);
-        Course course = courseRepository.findById(1L).get();
+        Course course = courseRepository.findById(id).get();
         List<Student> studentList = course.getStudentsList();
-        for (Student student: studentList){
-           student.updateGrade(assignment, null);
+        for (Student student : studentList) {
+            System.out.println(student);
+            // student.updateGrade(assignment, null);
         }
         course.addToAssignmentList(assignment);
         return Response.SC_OK;
     }
 
-    @PostMapping("/addTeacher")
-    public int addTeacher(@RequestBody Teacher teacher){
+    @PostMapping("courses/{id}/addTeacher")
+    public int addTeacher(@RequestBody Teacher teacher, @PathVariable Long id) {
         teacherRepository.save(teacher);
-        Course course = courseRepository.findById(1L).get();
+        Course course = courseRepository.findById(id).get();
         teacher.setCourse(course);
         return Response.SC_OK;
     }

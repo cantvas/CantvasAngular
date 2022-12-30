@@ -1,5 +1,8 @@
-<mat-card>
-  <mat-card-title>{{assignment?.name}}</mat-card-title>
-  <mat-card-content>{{assignment?.document}}</mat-card-content>
-  <button mat-button-raised class="submit-assignment">Submit</button>
+<h1 class="courses-title">Assignment Details</h1>
+<div class="course-details-holder">
+<mat-card class="course-details">
+  <mat-card-title class="course-details-header">{{assignment?.name}}</mat-card-title>
+  <mat-card-content class="course-details-body">{{assignment?.document}}</mat-card-content>
+  <button mat-flat-button color="warn" class="goto-assignment-detail">Submit</button>
 </mat-card>
+</div>
