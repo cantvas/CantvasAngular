@@ -39,3 +39,22 @@
     margin-right: auto;
     margin-bottom: 20px;
 }
+
+.dueDate{
+    font-size:small;
+}
+
+.parent{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    width: 75%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+
+.child2{
+    display: flex;
+    align-items: center;
+}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from '../model/course';
 import { Student } from '../model/student';
 import { User } from '../model/user';
+import { CourseService } from '../service/course.service';
 import { StudentService } from '../service/student.service';
 
 @Component({
@@ -11,8 +13,9 @@ import { StudentService } from '../service/student.service';
 export class UserListComponent implements OnInit {
 
   students: Student[];
+  courses: Course[];
 
-  constructor(private studentService: StudentService) {
+  constructor(private studentService: StudentService, private courseService: CourseService) {
   }
 
   ngOnInit() {
