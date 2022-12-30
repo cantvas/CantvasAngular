@@ -14,14 +14,14 @@ export class AssignmentService {
     this.http.post("http://localhost:8080/teacher/addAssignment", assignment);
   }
 
-  public getAllAssignments(): Observable<Assignment[]>{
-    
+  public getAllAssignments(): Observable<Assignment[]> {
+
     let allAssignments = this.http.get<Assignment[]>("http://localhost:8080/assignments");
     allAssignments.subscribe(data => console.log(data));
     return allAssignments;
   }
 
-  public findOne(id: number): Observable<Assignment>{
+  public findOne(id: number): Observable<Assignment> {
     return this.http.get<Assignment>(`http://localhost:8080/assignment/${id}`);
   }
 }
