@@ -1,6 +1,6 @@
 # Cantvas
 
-> cant, n.: To use pretentious language, barbarous jargon, or
+> cant, v.: To use pretentious language, barbarous jargon, or
  technical terms; to talk with an affectation of learning.
 
  Cantvas is an ongoing project to create a new and simple learning management system (LMS). We identified some concerns with Canvas, an LMS we have been using for our course, and tried to implement some fixes for them. A few of these issues include:
@@ -23,7 +23,7 @@
 
  # Run it
 
- Once you have all the required tools, you can run the backend with `./mvnw spring-boot:run` in the root directory. From the `angularclient` directory, run the client app with `ng serve`, optionally specifying the `--open` flag to trigger a new browser window with the running. 
+ Once you have all the required tools, you can run the backend with `./mvnw spring-boot:run` in the root directory. From the `angularclient` directory, run the client app with `ng serve`, optionally specifying the `--open` flag to trigger a new browser window with the running app. 
 
 
 
