@@ -2,19 +2,27 @@
 
   <h3>All Courses</h3>
 
-  <mat-tab-group>
+  <mat-tab-group class="tab1">
 
-    <mat-tab label="Beginners">Hello werld</mat-tab>
+    <mat-tab label="Readings" class="labels" >Hello werld</mat-tab>
 
-    <mat-tab label="Advanced">
+    <mat-tab class="labels" label="Labs">
         <mat-card *ngFor = "let assignment of assignments" class="course-details" >
-          <mat-card-title>{{assignment.name}}</mat-card-title>
-          <mat-card-content>{{assignment.document}}</mat-card-content>
-          <button mat-button-raised class="goto-assignment-detail" [routerLink] = "['/assignment', assignment.id]">Details</button>
+      <div class="parent">
+          <div class="child1">
+          <mat-card-title class="dueDate"> Due: 12/31/2022 2:00pm</mat-card-title>
+          <mat-card-title class="dueDate"> Points Possible: 10</mat-card-title>
+        </div>
+        <div class="child2">
+          <mat-card-title class="cardTitle">{{assignment.name}}</mat-card-title>
+        </div>
+      </div>
+          <mat-card-content class="cardContent">{{assignment.document}}</mat-card-content>
+          <button mat-flat-button color="warn" class="goto-assignment-detail" [routerLink] = "['/assignment', assignment.id]">Details</button>
         </mat-card>
     </mat-tab>
 
-    <mat-tab label="Super Duper">
+    <mat-tab class="labels"  label="Code Challenges">
       
       
     </mat-tab>
