@@ -2,10 +2,7 @@ import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewEn
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Course } from "../../model/course";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms"
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { CourseService } from 'src/app/service/course.service';
-// import { LoadingService } from '../loading/loading.service';
 
 @Component({
   selector: 'app-course-dialog',
@@ -39,7 +36,7 @@ export class CourseDialogComponent implements AfterViewInit {
     save() {
 
         const changes = this.form.value;
-        const saveCourse$ = this.coursesService.update(this.course.id, changes).subscribe(x => console.log(x));
+        const saveCourse$ = this.coursesService.update(this.course.id, changes.description).subscribe(x => console.log(x));
         this.close();
 
     }
