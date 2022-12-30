@@ -1,7 +1,15 @@
-<mat-card class="course-details">
-    <mat-card-title>{{ course.name }}</mat-card-title>
-    <mat-card-content>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat odio commodi cupiditate perspiciatis.
-         Delectus consectetur dolor 
-        rerum qui beatae sequi at iure hic, rem cumque ipsam ad cum labore quas?</mat-card-content>
-    <button mat-button-raised class="add-assignment-button" (click)="addAssignment()">Add assignment</button>
-</mat-card>
+<h1 class="courses-title">Course View</h1>
+<div class="course-details-holder">
+    <mat-card class="course-details">
+        <mat-card-title class="course-details-header">{{ course.name }}</mat-card-title>
+        <mat-card-content class="course-details-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat odio commodi cupiditate perspiciatis.
+            Delectus consectetur dolor 
+            rerum qui beatae sequi at iure hic, rem cumque ipsam ad cum labore quas?</mat-card-content>
+        <div class="add-assignment-button">
+            <button mat-fab extended color="warn" aria-label="Example icon button with a home icon" (click)="addAssignment()">
+                <mat-icon>add</mat-icon>
+            Add Assignment
+            </button>
+        </div>
+    </mat-card>
+</div>
